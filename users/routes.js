@@ -78,6 +78,13 @@ const createUser = async (req, res) => {
     
   };
 
+  const findUsersByRole = async (req, res) => {
+    const role = req.params.role;
+    const users = await dao.findUsersByRole(role);
+    res.json(users);
+  };
+
+
   const account = async (req, res) => {
     res.json(req.session['currentUser']);
   };
@@ -90,5 +97,6 @@ const createUser = async (req, res) => {
   app.post("/api/users/signin", signin);
   app.post("/api/users/signout", signout);
   app.post("/api/users/account", account);
+  app.get("/api/users/role/:role", findUsersByRole);
 }
 export default UserRoutes;
