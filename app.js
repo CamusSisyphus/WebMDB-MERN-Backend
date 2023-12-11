@@ -26,4 +26,4 @@ app.use(express.json());
 UserRoutes(app);
 LikesRoutes(app);
 
-app.listen(4000);
+app.listen(process.env.PORT || 4000);
