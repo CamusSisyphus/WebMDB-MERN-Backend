@@ -86,7 +86,8 @@ const createUser = async (req, res) => {
 
 
   const account = async (req, res) => {
-    res.json(req.session['currentUser']);
+    const currentUser = await req.session['currentUser']
+    res.json(currentUser);
   };
   app.post("/api/users", createUser);
   app.get("/api/users", findAllUsers);
